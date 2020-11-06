@@ -26,14 +26,18 @@ tableData.forEach(incident => {
 buttonFilter.on("click", function() {
     d3.selectAll(".incident").remove();
     
-    var inputElement = d3.select("#inputDate");
+    var inputDateElement = d3.select("#inputDate");
+    var inputCityElement = d3.select("#inputCity");
 
-    var inputValue = inputElement.property("value");
+    var inputDateValue = inputDateElement.property("value");
+    var inputCityValue = inputCityElement.property("value");
+    
 
-    console.log(inputValue);
+    console.log(inputDateValue);
 
     
-    var filteredData = tableData.filter(incident => incident.datetime === inputValue);
+    var filteredData = tableData.filter(incident => incident.datetime === inputDateValue || 
+        incident.city.toLowerCase() === inputCityValue.toLowerCase());
 
     console.log(filteredData);
 
@@ -59,7 +63,8 @@ buttonFilter.on("click", function() {
 
 buttonClear.on("click", function() {
     d3.selectAll(".incident").remove();
-    
+    d3.select("#inputDate").property("value", "")
+
     tableData.forEach(incident => {
         console.log(incident);
       
