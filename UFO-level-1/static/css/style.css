@@ -1,11 +1,29 @@
-html, body {
+html, 
+body {
     height: 100%;
     padding: 0;
     margin: 0;
   }
 
-#backheading {
-    height: 500px;
+
+.jumbotron {
     background-image: url("../images/nasa.jpg");
+    background-size: cover;
+    height: 550px;
+  }
+#backheading {
+    position: relative;
+    height: 550px;
+    padding: 20px;
     margin: 0;
+    background: black;
+    background-image: url("../images/nasa.jpg");
+    background-attachment: fixed;
+    background-position: bottom center;
+    background-size: cover;
+}
+
+.form-control {
+    width: 150px;
+
 }
