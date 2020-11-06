@@ -11,20 +11,9 @@ body {
     background-size: cover;
     height: 550px;
   }
-/* #backheading {
-    position: relative;
-    height: 550px;
-    padding: 20px;
-    margin: 0;
-    background: black;
-    background-image: url("../images/nasa.jpg");
-    background-attachment: fixed;
-    background-position: bottom center;
-    background-size: cover;
-} */
 
 .form-control {
-    width: 150px;
+    width: 120px;
 
 }
 
