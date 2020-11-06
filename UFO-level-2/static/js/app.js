@@ -35,18 +35,39 @@ buttonFilter.on("click", function() {
     d3.selectAll(".incident").remove();
     
     var inputDateElement = d3.select("#inputDate");
+    var inputCityElement = d3.select("#inputCity");
 
     var inputDateValue = inputDateElement.property("value");
+    var inputCityValue = inputCityElement.property("value");
     
 
     console.log(inputDateValue);
 
     
-    var filteredData = tableData.filter(incident => incident.datetime === inputDateValue);
+    var filteredData = tableData.filter(incident => incident.datetime === inputDateValue || 
+        incident.city.toLowerCase() === inputCityValue.toLowerCase());
 
     console.log(filteredData);
 
     showTableInfo(filteredData)
+
+    // filteredData.forEach(incident => {
+    //     console.log(incident);
+      
+    //     //Append one table row 
+    //     var row = tbody.append("tr").attr("class", "incident");
+      
+    //     //Log each incident report value
+    //     Object.entries(incident).forEach(([key, value]) => {
+    //       console.log(key, value);
+      
+    //       //Append a cell per incident report value
+    //       var cell = row.append("td");
+      
+    //       // Add each cell text value
+    //       cell.text(value);
+    //     });
+    // });
 
 })
 

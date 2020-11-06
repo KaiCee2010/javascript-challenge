@@ -11,7 +11,7 @@ body {
     background-size: cover;
     height: 550px;
   }
-/* #backheading {
+#backheading {
     position: relative;
     height: 550px;
     padding: 20px;
@@ -21,15 +21,9 @@ body {
     background-attachment: fixed;
     background-position: bottom center;
     background-size: cover;
-} */
+}
 
 .form-control {
     width: 150px;
 
 }
-
-.centerhv {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
