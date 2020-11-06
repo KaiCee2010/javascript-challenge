@@ -12,6 +12,18 @@ body {
     height: 550px;
   }
 
+.jumbotron h1 {
+    font-size: 0.1rem;
+    animation: title 1.2s forwards linear;
+  }
+
+.jumbotron p {
+    font-size: 2rem;
+    opacity: 0;
+    animation: subtitle 1.2s forwards linear;
+    animation-delay: 1.2s;
+  }
+
 .form-control {
     width: 120px;
 
@@ -21,4 +33,37 @@ body {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      font-size: 7.5rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes smaller-title {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      font-size: 5.5rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes subtitle {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
   }
