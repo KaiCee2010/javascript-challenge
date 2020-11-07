@@ -27,12 +27,7 @@ function showTableInfo(tableInfo){
     });
 }
 
-showTableInfo(tableData)
-
-
-
-buttonFilter.on("click", function() {
-    d3.selectAll(".incident").remove();
+function createFilter(tableInfo){
     
     var inputDateElement = d3.select("#inputDate");
     var inputCityElement = d3.select("#inputCity");
@@ -45,53 +40,175 @@ buttonFilter.on("click", function() {
     var inputStateValue = inputStateElement.property("value");
     var inputCountryValue = inputCountryElement.property("value");
     var inputShapeValue = inputShapeElement.property("value");
+
+    var radioChecked = d3.select('input[name="inlineRadioOptions"]:checked').node().value
+
+    console.log("radio: ", radioChecked)
+      
+    if (radioChecked === "or"){
+        var finalFiltered  = tableInfo.filter(incident => incident.datetime === inputDateValue || incident.city.toLowerCase() === inputCityValue.toLowerCase() ||
+        incident.state.toLowerCase() === inputStateValue.toLowerCase() || incident.country.toLowerCase() === inputCountryValue.toLowerCase() ||
+        incident.shape.toLowerCase() === inputShapeValue.toLowerCase())
+        
+        console.log(finalFiltered)
+
+        return finalFiltered
+    }  
+    else {
+        if ( inputDateValue !== ""){
+            var dateFiltered = tableInfo.filter(incident => incident.datetime === inputDateValue);  
+        }
+        else {var dateFiltered = tableInfo}
+        
+        if (inputCityValue !== "" ){
+            var cityFiltered = dateFiltered.filter(incident => incident.city.toLowerCase() === inputCityValue.toLowerCase());
+        }
+        else {var cityFiltered = dateFiltered}
     
-    var strArray = [];
+        // console.log(cityFiltered);
+    
+        if (inputStateValue !== "" ){
+            var stateFiltered = cityFiltered.filter(incident => incident.state.toLowerCase() === inputStateValue.toLowerCase());
+        }
+        else {var stateFiltered = cityFiltered}
+    
+        // console.log(stateFiltered);
+    
+        if (inputCountryValue !== "" ){
+            var countryFiltered = stateFiltered.filter(incident => incident.country.toLowerCase() === inputCountryValue.toLowerCase());
+        }
+        else {var countryFiltered = stateFiltered}
+    
+        // console.log(countryFiltered);
+    
+        if (inputShapeValue !== "" ){
+            var finalFiltered = countryFiltered.filter(incident => incident.shape.toLowerCase() === inputShapeValue.toLowerCase());
+        }
+        else {var finalFiltered = countryFiltered}
+        
+        console.log(finalFiltered);
+        
+        return finalFiltered  
+    };
 
-    console.log("This is the input value", inputDateValue);
+    
 
-    if ( inputDateValue !== ""){
-        strArray.push("incident.datetime === inputDateValue");  
-    }
-    console.log(strArray);
 
-    if (inputCityValue !== "" ){
-        strArray.push("incident.city === inputCityValue");
-    }
-    console.log(strArray);
+    // if ( inputDateValue !== ""){
+    //     strArray.push("incident.datetime === inputDateValue");  
+    // }
+    // console.log(strArray);
 
-    if (inputStateValue !== "" ){
-        strArray.push("incident.city === inputStateValue");
-    }
-    console.log(strArray);
+    // if (inputCityValue !== "" ){
+    //     strArray.push("incident.city.toLowerCase() === inputCityValue.toLowerCase()");
+    // }
+    // console.log(strArray);
 
-    if (inputCountryValue !== "" ){
-        strArray.push("incident.city === inputCountryValue");
-    }
-    console.log(strArray);
+    // if (inputStateValue !== "" ){
+    //     strArray.push("incident.state.toLowerCase() === inputStateValue.toLowerCase()");
+    // }
+    // console.log(strArray);
 
-    if (inputShapeValue !== "" ){
-        strArray.push("incident.city === inputShapeValue");
-    }
-    console.log(strArray);
+    // if (inputCountryValue !== "" ){
+    //     strArray.push("incident.country.toLowerCase() === inputCountryValue.toLowerCase()");
+    // }
+    // console.log(strArray);
 
-    // if (typeof inputCityValue !== null ){
-    //     // this statement will not execute
-    //     strArray.push("incident.city === inputCityValue");
+    // if (inputShapeValue !== "" ){
+    //     strArray.push("incident.shape.toLowerCase() === inputShapeValue.toLowerCase()");
     // }
     // console.log(strArray);
 
 
-    var finalStr = strArray.join(" && ")      
-      
-    console.log("This is the final string", finalStr)
+    // var radioChecked = d3.select('input[name="inlineRadioOptions"]:checked').node().value
+    // console.log("This radio is checked", radioChecked)
 
-    // var filteredData = tableData.filter(incident => incident.datetime === inputDateValue || 
-    //     incident.city.toLowerCase() === inputCityValue.toLowerCase());
+    // if (radioChecked === "or"){
+    //     var endStr = strArray.join(" || ")
+    // } 
+    // else{
+    //     var endStr = strArray.join(" && ")
+    // };
+                
+    // var beginStr = "incident => "
 
-    // console.log(filteredData);
+    // var finalStr = beginStr.concat(endStr)
 
-    // showTableInfo(filteredData)
+    // console.log("This is the final string", endStr)
+
+    // return endStr
+}
+
+showTableInfo(tableData)
+
+
+
+buttonFilter.on("click", function() {
+    d3.selectAll(".incident").remove();
+    
+    // var inputDateElement = d3.select("#inputDate");
+    // var inputCityElement = d3.select("#inputCity");
+    // var inputStateElement = d3.select("#inputState");
+    // var inputCountryElement = d3.select("#inputCountry");
+    // var inputShapeElement = d3.select("#inputShape");
+
+    // var inputDateValue = inputDateElement.property("value");
+    // var inputCityValue = inputCityElement.property("value");
+    // var inputStateValue = inputStateElement.property("value");
+    // var inputCountryValue = inputCountryElement.property("value");
+    // var inputShapeValue = inputShapeElement.property("value");
+    
+    // var strArray = [];
+
+    // console.log("This is the input value", inputDateValue);
+
+    // if ( inputDateValue !== ""){
+    //     strArray.push("incident.datetime === inputDateValue");  
+    // }
+    // console.log(strArray);
+
+    // if (inputCityValue !== "" ){
+    //     strArray.push("incident.city.toLowerCase() === inputCityValue.toLowerCase()");
+    // }
+    // console.log(strArray);
+
+    // if (inputStateValue !== "" ){
+    //     strArray.push("incident.state.toLowerCase() === inputStateValue.toLowerCase()");
+    // }
+    // console.log(strArray);
+
+    // if (inputCountryValue !== "" ){
+    //     strArray.push("incident.country.toLowerCase() === inputCountryValue.toLowerCase()");
+    // }
+    // console.log(strArray);
+
+    // if (inputShapeValue !== "" ){
+    //     strArray.push("incident.shape.toLowerCase() === inputShapeValue.toLowerCase()");
+    // }
+    // console.log(strArray);
+
+
+    // var radioChecked = d3.select('input[name="inlineRadioOptions"]:checked').node().value
+    // console.log("This radio is checked", radioChecked)
+
+    // if (radioChecked === "or"){
+    //     var endStr = strArray.join(" || ")
+    // } 
+    // else{
+    //     var endStr = strArray.join(" && ")
+    // };
+             
+    // var beginStr = "incident => "
+
+    // var finalStr = beginStr.concat(endStr)
+    
+    // console.log("This is the final string", finalStr)
+
+    var filteredData = createFilter(tableData)
+
+    console.log(filteredData);
+
+    showTableInfo(filteredData)
 
 })
 
