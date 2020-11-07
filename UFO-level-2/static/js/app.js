@@ -36,30 +36,52 @@ buttonFilter.on("click", function() {
     
     var inputDateElement = d3.select("#inputDate");
     var inputCityElement = d3.select("#inputCity");
+    var inputStateElement = d3.select("#inputState");
+    var inputCountryElement = d3.select("#inputCountry");
+    var inputShapeElement = d3.select("#inputShape");
 
     var inputDateValue = inputDateElement.property("value");
     var inputCityValue = inputCityElement.property("value");
+    var inputStateValue = inputStateElement.property("value");
+    var inputCountryValue = inputCountryElement.property("value");
+    var inputShapeValue = inputShapeElement.property("value");
     
     var strArray = [];
 
-    
+    console.log("This is the input value", inputDateValue);
 
-    var operator = " && "
-
-    console.log(inputDateValue);
-
-    if (typeof inputDateValue !== 'undefined'){
-        // this statement will not execute
-        strArray.push("incident.datetime === inputDateValue");
-        console.log(strArray);
+    if ( inputDateValue !== ""){
+        strArray.push("incident.datetime === inputDateValue");  
     }
+    console.log(strArray);
 
-    if (typeof inputCityValue !== 'undefined'){
-        // this statement will not execute
+    if (inputCityValue !== "" ){
         strArray.push("incident.city === inputCityValue");
-        console.log(strArray);
     }
-    
+    console.log(strArray);
+
+    if (inputStateValue !== "" ){
+        strArray.push("incident.city === inputStateValue");
+    }
+    console.log(strArray);
+
+    if (inputCountryValue !== "" ){
+        strArray.push("incident.city === inputCountryValue");
+    }
+    console.log(strArray);
+
+    if (inputShapeValue !== "" ){
+        strArray.push("incident.city === inputShapeValue");
+    }
+    console.log(strArray);
+
+    // if (typeof inputCityValue !== null ){
+    //     // this statement will not execute
+    //     strArray.push("incident.city === inputCityValue");
+    // }
+    // console.log(strArray);
+
+
     var finalStr = strArray.join(" && ")      
       
     console.log("This is the final string", finalStr)
@@ -76,6 +98,7 @@ buttonFilter.on("click", function() {
 buttonClear.on("click", function() {
     d3.selectAll(".incident").remove();
     d3.select("#inputDate").property("value", "")
+    d3.select("#inputCity").property("value", "")
 
     showTableInfo(tableData)
 
