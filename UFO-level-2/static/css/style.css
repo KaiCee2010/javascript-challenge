@@ -11,19 +11,59 @@ body {
     background-size: cover;
     height: 550px;
   }
-#backheading {
-    position: relative;
-    height: 550px;
-    padding: 20px;
-    margin: 0;
-    background: black;
-    background-image: url("../images/nasa.jpg");
-    background-attachment: fixed;
-    background-position: bottom center;
-    background-size: cover;
-}
+
+.jumbotron h1 {
+    font-size: 0.1rem;
+    animation: title 1.2s forwards linear;
+  }
+
+.jumbotron p {
+    font-size: 2rem;
+    opacity: 0;
+    animation: subtitle 1.2s forwards linear;
+    animation-delay: 1.2s;
+  }
 
 .form-control {
-    width: 150px;
+    width: 120px;
 
 }
+
+.centerhv {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      font-size: 7.5rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes smaller-title {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      font-size: 5.5rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes subtitle {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }

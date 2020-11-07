@@ -40,34 +40,36 @@ buttonFilter.on("click", function() {
     var inputDateValue = inputDateElement.property("value");
     var inputCityValue = inputCityElement.property("value");
     
+    var strArray = [];
+
+    
+
+    var operator = " && "
 
     console.log(inputDateValue);
 
+    if (typeof inputDateValue !== 'undefined'){
+        // this statement will not execute
+        strArray.push("incident.datetime === inputDateValue");
+        console.log(strArray);
+    }
+
+    if (typeof inputCityValue !== 'undefined'){
+        // this statement will not execute
+        strArray.push("incident.city === inputCityValue");
+        console.log(strArray);
+    }
     
-    var filteredData = tableData.filter(incident => incident.datetime === inputDateValue || 
-        incident.city.toLowerCase() === inputCityValue.toLowerCase());
+    var finalStr = strArray.join(" && ")      
+      
+    console.log("This is the final string", finalStr)
 
-    console.log(filteredData);
+    // var filteredData = tableData.filter(incident => incident.datetime === inputDateValue || 
+    //     incident.city.toLowerCase() === inputCityValue.toLowerCase());
 
-    showTableInfo(filteredData)
+    // console.log(filteredData);
 
-    // filteredData.forEach(incident => {
-    //     console.log(incident);
-      
-    //     //Append one table row 
-    //     var row = tbody.append("tr").attr("class", "incident");
-      
-    //     //Log each incident report value
-    //     Object.entries(incident).forEach(([key, value]) => {
-    //       console.log(key, value);
-      
-    //       //Append a cell per incident report value
-    //       var cell = row.append("td");
-      
-    //       // Add each cell text value
-    //       cell.text(value);
-    //     });
-    // });
+    // showTableInfo(filteredData)
 
 })
 
