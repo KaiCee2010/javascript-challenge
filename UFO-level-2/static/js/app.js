@@ -89,54 +89,7 @@ function createFilter(tableInfo){
         console.log(finalFiltered);
         
         return finalFiltered  
-    };
-
-    
-
-
-    // if ( inputDateValue !== ""){
-    //     strArray.push("incident.datetime === inputDateValue");  
-    // }
-    // console.log(strArray);
-
-    // if (inputCityValue !== "" ){
-    //     strArray.push("incident.city.toLowerCase() === inputCityValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-    // if (inputStateValue !== "" ){
-    //     strArray.push("incident.state.toLowerCase() === inputStateValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-    // if (inputCountryValue !== "" ){
-    //     strArray.push("incident.country.toLowerCase() === inputCountryValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-    // if (inputShapeValue !== "" ){
-    //     strArray.push("incident.shape.toLowerCase() === inputShapeValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-
-    // var radioChecked = d3.select('input[name="inlineRadioOptions"]:checked').node().value
-    // console.log("This radio is checked", radioChecked)
-
-    // if (radioChecked === "or"){
-    //     var endStr = strArray.join(" || ")
-    // } 
-    // else{
-    //     var endStr = strArray.join(" && ")
-    // };
-                
-    // var beginStr = "incident => "
-
-    // var finalStr = beginStr.concat(endStr)
-
-    // console.log("This is the final string", endStr)
-
-    // return endStr
+    };   
 }
 
 showTableInfo(tableData)
@@ -146,64 +99,6 @@ showTableInfo(tableData)
 buttonFilter.on("click", function() {
     d3.selectAll(".incident").remove();
     
-    // var inputDateElement = d3.select("#inputDate");
-    // var inputCityElement = d3.select("#inputCity");
-    // var inputStateElement = d3.select("#inputState");
-    // var inputCountryElement = d3.select("#inputCountry");
-    // var inputShapeElement = d3.select("#inputShape");
-
-    // var inputDateValue = inputDateElement.property("value");
-    // var inputCityValue = inputCityElement.property("value");
-    // var inputStateValue = inputStateElement.property("value");
-    // var inputCountryValue = inputCountryElement.property("value");
-    // var inputShapeValue = inputShapeElement.property("value");
-    
-    // var strArray = [];
-
-    // console.log("This is the input value", inputDateValue);
-
-    // if ( inputDateValue !== ""){
-    //     strArray.push("incident.datetime === inputDateValue");  
-    // }
-    // console.log(strArray);
-
-    // if (inputCityValue !== "" ){
-    //     strArray.push("incident.city.toLowerCase() === inputCityValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-    // if (inputStateValue !== "" ){
-    //     strArray.push("incident.state.toLowerCase() === inputStateValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-    // if (inputCountryValue !== "" ){
-    //     strArray.push("incident.country.toLowerCase() === inputCountryValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-    // if (inputShapeValue !== "" ){
-    //     strArray.push("incident.shape.toLowerCase() === inputShapeValue.toLowerCase()");
-    // }
-    // console.log(strArray);
-
-
-    // var radioChecked = d3.select('input[name="inlineRadioOptions"]:checked').node().value
-    // console.log("This radio is checked", radioChecked)
-
-    // if (radioChecked === "or"){
-    //     var endStr = strArray.join(" || ")
-    // } 
-    // else{
-    //     var endStr = strArray.join(" && ")
-    // };
-             
-    // var beginStr = "incident => "
-
-    // var finalStr = beginStr.concat(endStr)
-    
-    // console.log("This is the final string", finalStr)
-
     var filteredData = createFilter(tableData)
 
     console.log(filteredData);
@@ -216,6 +111,9 @@ buttonClear.on("click", function() {
     d3.selectAll(".incident").remove();
     d3.select("#inputDate").property("value", "")
     d3.select("#inputCity").property("value", "")
+    d3.select("#inputState").property("value", "")
+    d3.select("#inputCountry").property("value", "")
+    d3.select("#inputShape").property("value", "")
 
     showTableInfo(tableData)
 
