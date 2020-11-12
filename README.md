@@ -1,6 +1,6 @@
 # Javascript Challenge
 
-![Page Banner](/UFO-level-1/images.png)
+![Page Banner](/UFO-level-1/static/images/ufo_truth.png)
 
 During this homework assignment two challenges were created: UFO-level-1 and UFO-level-2.
 
