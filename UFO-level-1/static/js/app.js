@@ -30,12 +30,14 @@ function showTableInfo(tableInfo){
 showTableInfo(tableData)
 
 
-
+// When button is clicked, filter data
 buttonFilter.on("click", function() {
     d3.selectAll(".incident").remove();
-    
+
+    // Assign form fields to variables
     var inputDateElement = d3.select("#inputDate");
 
+    // Assign values of form elements to variables
     var inputDateValue = inputDateElement.property("value");
     
 
@@ -50,6 +52,7 @@ buttonFilter.on("click", function() {
 
 })
 
+// When button is clicked, clear filter
 buttonClear.on("click", function() {
     d3.selectAll(".incident").remove();
     d3.select("#inputDate").property("value", "")

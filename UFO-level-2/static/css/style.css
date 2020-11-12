@@ -26,18 +26,19 @@ body {
 
 form {
   padding: 10px;
-  background-color: #4e5d6c;
-  ;
+  border: 2px solid rgb(26, 25, 25);
 }
 
 .form-control {
     width: 120px;
     height: 35px;
+    border-radius: 5px;
 
 }
 
 .btn {
   box-shadow: 4px 4px 10px black;
+  border-radius: 10px;
 }
 
 .centerhv {

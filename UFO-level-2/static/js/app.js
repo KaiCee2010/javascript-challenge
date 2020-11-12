@@ -61,6 +61,8 @@ function createFilter(tableInfo){
     } 
     // If And radio button is checked, filter fields using 'And' operator and return values.
     else {
+        
+        
         if ( inputDateValue !== ""){
             var dateFiltered = tableInfo.filter(incident => incident.datetime === inputDateValue);  
         }
@@ -86,16 +88,16 @@ function createFilter(tableInfo){
         }
         else {var finalFiltered = countryFiltered}
         
-        console.log(finalFiltered);
-        
+                
         return finalFiltered  
     };   
 }
 
+// Display all data before filtering it
 showTableInfo(tableData)
 
 
-
+// If filter button is click, filter data
 buttonFilter.on("click", function() {
     d3.selectAll(".incident").remove();
     
@@ -107,6 +109,7 @@ buttonFilter.on("click", function() {
 
 })
 
+// When clear button is clicked, remove rows and clear all filter form fields
 buttonClear.on("click", function() {
     d3.selectAll(".incident").remove();
     d3.select("#inputDate").property("value", "")
